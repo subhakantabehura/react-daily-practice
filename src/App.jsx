@@ -1,31 +1,34 @@
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import Button from './components/common/Button';
-import Input from './components/common/Input';
-import Dashboard from './components/Dashboard/Dashboard';
-import UserGateway from './components/UserGateway';
-import CurrentYear from './components/CurrentYear';
-
+import Dashboard from './components/Dashboard';
+import Counter from './components/Counter';
+import SearchBar from './components/SearchBar';
+import SecretMessage from './components/SecretMessage';
+import TodoList from './components/TodoList';
+import AutoFocusForm from './components/AutoFocusForm';
+import "./App.css";
 
 function App() {
   return (
     <div>
-      <div className="app">
-        {/* This component for 1st task */}
-        <Button />
-        <Input />
+      <div>
+
+        {/* Task1 component */}
         <Dashboard />
-        <Navbar />
-        <Footer />
 
-        {/* This component for 2nd task */}
-        <UserGateway />
+        {/* Task2 component */}
+        <Counter />
 
-        {/* This component for 3rd task */}
-        <CurrentYear />
+        {/* Task3 component */}
+        <SearchBar />
 
+        {/* Task4 component */}
+        <SecretMessage />
+
+        {/* Task5 component */}
+        <TodoList />
+
+        {/* Task6 component */}
+        <AutoFocusForm />
       </div>
-
     </div>
   );
 }
