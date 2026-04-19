@@ -1,0 +1,20 @@
+:root {
+  /* Color Palette */
+  --primary-color: #A62626; /* NSDL Maroon */
+  --primary-light: #FCE8E8;
+  --secondary-color: #F2C94C; /* Gold */
+  --text-main: #333333;
+  --text-muted: #666666;
+  --bg-main: #F4F7FE;
+  --bg-sidebar: #FFFFFF;
+  --white: #FFFFFF;
+  --border-color: #E0E0E0;
+  --shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  
+  /* Layout */
+  --sidebar-width: 260px;
+  --header-height: 70px;
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+}

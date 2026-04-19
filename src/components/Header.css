@@ -1,0 +1,124 @@
+.header {
+  height: 70px;
+  background: #fdfdfd;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.icon-wrapper {
+  position: relative;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #A62626;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+}
+
+.user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+.user-avatar-small {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%; /* Perfect circle as per Circle 3 */
+  overflow: hidden;
+  border: 1px solid #eeeeee;
+}
+
+.user-avatar-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name-text {
+  font-size: 14px;
+  color: #333333;
+  font-weight: 500;
+}
+
+.chevron-down {
+  color: #999999;
+}
+
+/* Updated Profile Dropdown matching Circle 3 style */
+.profile-popover {
+  position: absolute;
+  top: calc(100% + 15px);
+  right: -10px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+  width: 170px;
+  padding: 10px 0;
+  border: 1px solid #f0f0f0;
+}
+
+.popover-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popover-item {
+  padding: 10px 20px;
+  font-size: 13px;
+  color: #666666;
+  transition: all 0.2s;
+}
+
+.popover-item:hover {
+  background: #f9f9f9;
+  color: #A62626;
+}
+
+.logout-text {
+  color: #4A90E2; /* Lighter/blue shade for logout as observed */
+}

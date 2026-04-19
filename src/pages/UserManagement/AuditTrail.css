@@ -1,0 +1,203 @@
+.audit-trail-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.breadcrumb {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.breadcrumb .active {
+  color: #333;
+  font-weight: 500;
+}
+
+.page-header-row {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.back-btn:hover {
+  transform: translateX(-3px);
+  color: #A62626;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2b3674; /* Darker blue/grey title as in Figma */
+  margin: 0;
+}
+
+.filter-card {
+  flex-shrink: 0;
+  margin-bottom: 24px;
+}
+
+.audit-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.input-with-icon, .date-range-picker {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 42px;
+  flex: 1;
+}
+
+.date-range-picker {
+  max-width: 350px;
+}
+
+.date-range-picker input {
+  border: none;
+  outline: none;
+  width: 100px;
+  font-size: 14px;
+}
+
+.input-with-icon input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.download-btn {
+  background-color: #A62626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 20px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Table Area */
+.table-container {
+  flex: 1;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.table-wrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #fafafa;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table td {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar-small {
+  width: 32px;
+  height: 32px;
+  background: #E0E0E0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.pagination {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #eee;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-btn.selected {
+  border-color: #A62626;
+  color: #A62626;
+  font-weight: 600;
+}

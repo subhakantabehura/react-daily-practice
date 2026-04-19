@@ -1,12 +1,17 @@
 import React from 'react';
-import UserGallery from './components/UserGallery';
+import AppRoutes from './routes/AppRoutes';
+import './styles/global.css';
 
+/**
+ * Main App Component
+ * Root entry point for React application
+ */
 function App() {
   return (
-    <main className="app">
-      {/*  UserGallery  Component*/}
-      <UserGallery />
-    </main>
+    // React.StrictMode for catching potential problems in development
+    <React.StrictMode>
+      <AppRoutes />
+    </React.StrictMode>
   );
 }
 
