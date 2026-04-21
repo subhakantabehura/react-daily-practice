@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, Bell, ChevronDown } from 'lucide-react';
+import apiService from '../api/apiService';
+import { ENDPOINTS } from '../api/apiConfig';
 import './Header.css';
 
 /**
@@ -11,9 +13,33 @@ const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('nsdl_access_token');
-    navigate('/login');
+  // Get user details from localStorage safely
+  const getUserData = () => {
+    const data = localStorage.getItem('nsdl_user');
+    if (!data || data === 'undefined') return {};
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      return {};
+    }
+  };
+
+  const user = getUserData();
+  const userName = user.userName || 'User';
+  const roleName = user.roleName || 'Guest';
+
+  const handleLogout = async () => {
+
+    try {
+      // Call Logout API (using endpoint from config)
+      await apiService.post(ENDPOINTS.LOGOUT, {});
+    } catch (error) {
+      console.warn("Logout API failed, proceeding with local cleanup", error);
+    } finally {
+      localStorage.removeItem('nsdl_access_token');
+      localStorage.removeItem('nsdl_user');
+      navigate('/login');
+    }
   };
 
   return (
@@ -40,7 +66,10 @@ const Header = () => {
               alt="Stebin Ben" 
             />
           </div>
-          <span className="user-name-text">Stebin Ben</span>
+          <div className="user-info-text">
+            <span className="user-name-text">{userName}</span>
+            <span className="user-role-text">{roleName}</span>
+          </div>
           <ChevronDown size={14} className="chevron-down" />
 
           {/* Profile Popover / Dropdown */}

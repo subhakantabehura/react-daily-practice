@@ -1,104 +1,30 @@
-/* Simple & Clean Design System */
+/* ═══════════════════════════════════════════
+   index.css — Base Reset (NSDL Admin Portal)
+   Applied globally. Keep minimal.
+═══════════════════════════════════════════ */
+
 :root {
-  --bg-color: #f5f7fa;
-  --card-bg: #ffffff;
+  --bg-color: #f7f9fc;
   --text-color: #333333;
-  --primary-color: #4a90e2;
-  --border-color: #dddddd;
-  --shadow: 0 4px 6px rgba(0,0,0,0.1);
-  font-family: Arial, sans-serif;
 }
 
+/* Reset body — NO padding, NO margin, NO scrollbar */
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
+  overflow: hidden;
+}
+
+/* Global reset for html */
+html {
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.title {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 30px;
-}
-
-/* Grid Layout */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-/* Simple Card Styles */
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* Avatar Circle */
-.card-avatar {
-  width: 70px;
-  height: 70px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.card-name {
-  margin: 10px 0;
-  font-size: 1.3rem;
-  color: #2c3e50;
-}
-
-.card-details {
-  text-align: left;
-  width: 100%;
-  font-size: 0.9rem;
-}
-
-.card-details p {
-  margin: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 4px;
-}
-
-/* Loading & Error States */
-.loading {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 50px;
-  color: #7f8c8d;
-}
-
-.error-message {
-  text-align: center;
-  color: #e74c3c;
-  background: #fdf2f2;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #fab1b1;
-  margin: 20px 0;
+#root {
+  height: 100%;
 }

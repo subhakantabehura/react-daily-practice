@@ -109,3 +109,29 @@
   color: #A62626;
   font-weight: 600;
 }
+
+/* Icon inside submenu items (Create User, Create CBC User) */
+.submenu-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+  vertical-align: middle;
+  color: #A62626;
+  opacity: 0.8;
+}
+
+/* ── Nav link hover ── */
+.nav-link:hover,
+.nav-link-header:hover {
+  background: #fdf2f2;
+  color: #A62626;
+}
+
+/* ── Submenu arrow rotation ── */
+.submenu-arrow {
+  margin-left: auto;
+  transition: transform 0.25s ease;
+}
+.submenu-arrow.rotated {
+  transform: rotate(180deg);
+}

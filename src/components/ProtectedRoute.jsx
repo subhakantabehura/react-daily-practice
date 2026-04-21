@@ -1,21 +1,31 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 /**
- * ProtectedRoute Component
- * Guards routes that require authentication
+ * ProtectedRoute Component (React Router v6 Outlet Pattern)
+ * ─────────────────────────────────────────────────────────
+ * Acts as a layout-level guard. If the user is NOT authenticated,
+ * redirects to /login. Otherwise, renders the child routes via <Outlet />.
+ *
+ * Usage in AppRoutes:
+ *   <Route element={<ProtectedRoute />}>
+ *     <Route element={<MainLayout />}>
+ *       <Route path="/dashboard" element={<Dashboard />} />
+ *     </Route>
+ *   </Route>
  */
-const ProtectedRoute = ({ children }) => {
-  // Logic: Check for auth token in localStorage (updated to nsdl_access_token)
-  const isAuthenticated = !!localStorage.getItem('nsdl_access_token');
+const ProtectedRoute = () => {
+  // Check if a valid access token exists in localStorage
+  const token = localStorage.getItem('nsdl_access_token');
+  const isAuthenticated = !!token && token !== 'undefined' && token !== 'null';
 
-  /* BYPASS ENABLED: Uncomment lines below to restore security */
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  if (!isAuthenticated) {
+    // Redirect to login, replacing history so user can't go back
+    return <Navigate to="/login" replace />;
+  }
 
-  // If authenticated, render the child component
-  return children;
+  // Render child routes (the layout + page components)
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

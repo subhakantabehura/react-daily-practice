@@ -78,11 +78,25 @@
   object-fit: cover;
 }
 
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
 .user-name-text {
   font-size: 14px;
   color: #333333;
-  font-weight: 500;
+  font-weight: 600;
 }
+
+.user-role-text {
+  font-size: 11px;
+  color: #999999;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
 
 .chevron-down {
   color: #999999;
