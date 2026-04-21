@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import MainLayout from '../layouts/MainLayout';
 import Login from '../pages/Auth/Login';
 import ProtectedRoute from '../components/ProtectedRoute';
+import CreateCBCUser from '../pages/UserManagement/CreateCBCUser';
 
 /**
  * AppRoutes — Centralized Application Routing
@@ -45,7 +46,7 @@ const AppRoutes = () => {
 
             {/* Bank User Management / User Management */}
             <Route path="/user-management/create-user"     element={<ComingSoon title="Create User" />} />
-            <Route path="/user-management/create-cbc-user" element={<ComingSoon title="Create CBC User" />} />
+            <Route path="/user-management/create-cbc-user" element={<CreateCBCUser />} />
             <Route path="/user-management/request"         element={<ComingSoon title="User Request" />} />
             <Route path="/user-management/list-report"     element={<ComingSoon title="User List Report" />} />
 

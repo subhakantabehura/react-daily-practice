@@ -12,59 +12,72 @@ const apiService = axios.create({
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
-    // Note: 'User-Agent' is a browser-forbidden header — removed to prevent console errors
   },
 });
 
-/* Request Interceptor */
-apiService.interceptors.request.use(
-  (config) => {
-    // Logic: Session Token for subsequent requests
-    const token = localStorage.getItem('nsdl_access_token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+// New Service for Onboarding System
+export const onboardService = axios.create({
+    baseURL: API_CONFIG.ONBOARDING_BASE_URL,
+    timeout: 30000,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+});
 
-    // Logic: Payload Encryption Pattern
-    // Exceptions: Login endpoint (for this specific server) and getState/pdfFileUpload
-    const isException = 
-      config.url.includes(ENDPOINTS.LOGIN) || 
-      config.url.includes('getState') || 
-      config.url.includes('pdfFileUpload');
+const applyInterceptors = (instance) => {
+  instance.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('nsdl_access_token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
 
-    if (config.data && !isException && config.method !== 'get') {
-      console.log(`[API] Encrypting payload for: ${config.url}`);
-      config.data = encryptPayload(config.data);
-    }
+      // Mandatory NSDL Staging Headers
+      config.headers['X-GEO-LOCATION'] = '0,0';
+      config.headers['X-CLIENT-ID'] = 'NSDL_ADMIN';
+      config.headers['X-REQUEST-ID'] = `REQ-${Date.now()}`;
+      config.headers['X-SOURCE'] = 'WEB';
 
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+      const isException = 
+        config.url.includes(ENDPOINTS.LOGIN) || 
+        config.url.includes(ENDPOINTS.LOGOUT) ||
+        config.url.includes(ENDPOINTS.ONBOARD_CBC) ||
+        config.url.includes('getState') || 
+        config.url.includes('pdfFileUpload');
 
-/* Response Interceptor */
-apiService.interceptors.response.use(
-  (response) => {
-    // Logic: Handle Encrypted Responses
-    // If the response is a string, it's likely encrypted data from the API
-    if (typeof response.data === 'string' && response.data.length > 50) {
-      console.log(`[API] Decrypting response for: ${response.config.url}`);
-      return decryptResponse(response.data);
-    }
-    
-    // Check if the data itself is wrapped in an object like { ResponseData: "..." }
-    if (response.data && response.data.ResponseData) {
-        return decryptResponse(response.data.ResponseData);
-    }
+      if (config.data && !isException && config.method !== 'get') {
+        console.log(`[API] Encrypting payload for: ${config.url}`);
+        config.data = encryptPayload(config.data);
+      }
 
-    return response.data;
-  },
-  (error) => {
-    if (error.response && error.response.status === 401) {
-       // Handle unauthorized
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
+  instance.interceptors.response.use(
+    (response) => {
+      if (typeof response.data === 'string' && response.data.length > 50) {
+        console.log(`[API] Decrypting response for: ${response.config.url}`);
+        return decryptResponse(response.data);
+      }
+      
+      if (response.data && response.data.ResponseData) {
+          return decryptResponse(response.data.ResponseData);
+      }
+
+      return response.data;
+    },
+    (error) => {
+      if (error.response && error.response.status === 401) {
+         // Session Expired logic could go here
+      }
+      return Promise.reject(error);
     }
-    return Promise.reject(error);
-  }
-);
+  );
+};
+
+applyInterceptors(apiService);
+applyInterceptors(onboardService);
 
 export default apiService;

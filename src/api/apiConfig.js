@@ -5,6 +5,7 @@
 
 export const API_CONFIG = {
   AUTH_BASE_URL: 'https://services.iserveu.online/dev/nsdlab-internal',
+  ONBOARDING_BASE_URL: 'https://apidev.iserveu.online/NSDL',
   USER_MGMT_BASE_URL: 'https://services.iserveu.online/dev/nsdlab-internal/user-mgmt',
   IMAGE_BASE_URL: 'https://bankpratinidhi.nsdlbank.co.in/',
   
@@ -19,7 +20,8 @@ export const API_CONFIG = {
 export const ENDPOINTS = {
   LOGIN: '/user-authorization/user/login',
   LOGOUT: '/user-authorization/logout',
-  DASHBOARD_DATA: '/user/dashboard', // Relative to USER_MGMT
+  ONBOARD_CBC: '/user_onboarding/cbc-onboard',
+  DASHBOARD_DATA: '/user/dashboard', 
   FORGOT_PASSWORD_OTP: '/utility/send-forgot-password-otp',
   VERIFY_OTP_TEMP_PASS: '/verify-otp-send-temporary-password',
   FIRST_LOGIN_OTP: '/send-first-login-otp',

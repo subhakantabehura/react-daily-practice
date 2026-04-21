@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden; /* Prevent content area from growing beyond viewport */
+  overflow: hidden; /* Header stays fixed, page-content scrolls */
 }
 
 /* Header is fixed at the top of content area */
@@ -30,7 +30,8 @@
   display: flex;
   flex-direction: column;
   padding: 20px 32px 0 32px; /* Bottom padding removed as pagination will handle it */
-  overflow: hidden; /* Internal elements will handle scrolling */
+  overflow-y: auto; /* Allow long forms to scroll */
+  padding-bottom: 40px; /* Add breathing room at bottom */
   background: #f7f9fc;
 }
 
